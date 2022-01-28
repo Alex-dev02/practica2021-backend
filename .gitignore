@@ -1,6 +1,4 @@
 .vscode
-PointProblem/alex_moise/build
-PointProblem/alex_moise/buildcmake
 node_modules
 dist
 .env

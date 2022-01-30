@@ -5,9 +5,9 @@ export class TValue {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
     
-    @Column()
+    @Column({nullable: false})
     value!: number;
 
-    @Column()
+    @Column({nullable: false})
     boardId!: string;
 }

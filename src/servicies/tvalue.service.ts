@@ -12,6 +12,14 @@ export const getTValueById = async(id: string): Promise<TValue | undefined> => {
     return await getConnection().getRepository(TValue).findOne({id: id});
 }
 
+export const getLastAddedValue = async(): Promise<TValue| undefined> => {
+    return await getConnection().getRepository(TValue).findOne({
+        order: {
+            created: 'DESC',
+        }
+    });
+}
+
 export const getAllTValues = async(): Promise<TValue[]> => {
     return await getConnection().getRepository(TValue).find();
 }

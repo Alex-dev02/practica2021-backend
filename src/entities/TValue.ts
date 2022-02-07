@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class TValue {
@@ -10,4 +10,10 @@ export class TValue {
 
     @Column({nullable: false})
     boardId!: string;
+
+    @CreateDateColumn()
+    created!: Date;
+
+    @UpdateDateColumn()
+    updated!: Date;
 }

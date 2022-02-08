@@ -1,4 +1,5 @@
 import {createConnection } from "typeorm";
+import { Board } from "../entities/Board";
 import { TValue } from "../entities/TValue";
 require('dotenv').config()
 
@@ -11,6 +12,7 @@ export async function createConn() {
         ],
         migrations: [
             TValue,
+            Board
         ],
         synchronize: true, // true in productuion only for testing
                            // not recommanded

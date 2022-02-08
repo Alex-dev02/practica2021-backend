@@ -26,9 +26,9 @@ router.put('/', async(ctx: any, next: any): Promise<TValue> => {
     return ctx.body = await updateTValue({
         id: ctx.query.id,
         value: ctx.query.value,
-        boardId: ctx.query.boardId,
         created: ctx.query.created,
         updated: ctx.query.updated,
+        board: ctx.query.boardId
     });
 });
 

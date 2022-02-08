@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {Board} from "./Board";
 
 @Entity()
 export class TValue {
@@ -8,12 +9,12 @@ export class TValue {
     @Column({nullable: false})
     value!: number;
 
-    @Column({nullable: false})
-    boardId!: string;
-
     @CreateDateColumn()
     created!: Date;
 
     @UpdateDateColumn()
     updated!: Date;
+
+    @ManyToOne(() => Board, board => board.values)
+    board!: Board;
 }

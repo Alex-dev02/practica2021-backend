@@ -1,7 +1,9 @@
-import router from '../controllers/tvalue.controller';
+import tvalues from '../controllers/tvalue.controller';
+import boards from '../controllers/board.controller';
 
 export function getRouters() {
     return [
-        router
+        tvalues,
+        boards
     ];
 }

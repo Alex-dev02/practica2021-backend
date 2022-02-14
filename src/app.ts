@@ -7,6 +7,9 @@ import { getRouters } from './utils/router';
 import { createConn } from './utils/database';
 
 const app = new Koa();
+
+app.use(cors({origin: '*'}));
+
 app.use(logger());
 
 

@@ -6,7 +6,7 @@ import { deleteTValue, getAllTValues, getLastAddedValue, getTValueById, saveTVal
 const router = new Router();
 router.prefix('/tvalues');
 
-router.post('/', async (ctx: any, next: any): Promise<TValue> => {
+router.post('/create', async (ctx: any, next: any): Promise<TValue> => {
     return ctx.body = await saveTValue(ctx.query.value, ctx.query.boardId);
 });
 
@@ -18,18 +18,16 @@ router.get('/last', async (ctx: any, next: any): Promise<TValue | undefined> => 
     return ctx.body = await getLastAddedValue();
 });
 
-router.get('/', async (ctx: any, next: any): Promise<TValue[]> => {
+router.get('/all', async (ctx: any, next: any): Promise<TValue[]> => {
     return ctx.body = await getAllTValues();
 });
 
-router.put('/', async(ctx: any, next: any): Promise<TValue> => {
+router.put('/update', async(ctx: any, next: any): Promise<TValue> => {
     return ctx.body = await updateTValue({
         id: ctx.query.id,
         value: ctx.query.value,
-        created: ctx.query.created,
-        updated: ctx.query.updated,
         board: ctx.query.boardId
-    });
+    } as TValue);
 });
 
 router.delete('/', async(ctx: any, next: any): Promise<DeleteResult> => {

@@ -9,6 +9,7 @@ export async function createConn() {
         url: process.env.DATABASE_URL,
         entities: [
             TValue,
+            Board
         ],
         migrations: [
             TValue,

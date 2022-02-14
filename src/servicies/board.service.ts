@@ -2,7 +2,9 @@ import { DeleteResult, getConnection } from "typeorm";
 import { Board } from "../entities/Board";
 
 export const saveBoard = async (boardId: string): Promise<Board> => {
-	return await getConnection().getRepository(Board).save({boardId: boardId});
+	const board = new Board();
+	board.boardId = boardId;
+	return await getConnection().getRepository(Board).save(board);
 }
 
 export const getAllBoards = async (): Promise<Board[]> => {

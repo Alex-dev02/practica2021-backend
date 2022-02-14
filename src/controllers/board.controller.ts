@@ -6,7 +6,7 @@ import {deleteBoard, getAllBoards, getNumberOfBoards, saveBoard, updateBoard} fr
 const router = new Router();
 router.prefix('/board');
 
-router.post('/', async(ctx: any, next: any): Promise<Board> => {
+router.post('/create', async(ctx: any, next: any): Promise<Board> => {
 	return ctx.body = await saveBoard(ctx.query.boardId);
 })
 
@@ -18,7 +18,7 @@ router.get('/count', async(ctx: any, next: any): Promise<number>=> {
 	return ctx.body = await getNumberOfBoards();
 });
 
-router.put('/', async(ctx: any, next: any): Promise<Board> =>{
+router.put('/update', async(ctx: any, next: any): Promise<Board> =>{
 	return ctx.body = await updateBoard({
 		id: ctx.query.id,
 		boardId: ctx.query.boardId,

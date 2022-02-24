@@ -12,7 +12,7 @@ import { createConn } from './utils/database';
 const app = new Koa();
 const httpServer = createServer(app.callback());
 const io = new Server(httpServer, {});
-app.use(cors({origin: '*'}));
+//app.use(cors({origin: '*'}));
 app.use(async (ctx: any, next: any) => {
   ctx.state.io =  io;
   await next();

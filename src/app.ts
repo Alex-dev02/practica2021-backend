@@ -27,4 +27,4 @@ routers.forEach(router => {
   app.use(router.routes());
 });
 
-httpServer.listen(4000);
+httpServer.listen(process.env.PORT  || 4000);

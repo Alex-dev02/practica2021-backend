@@ -17,7 +17,7 @@ export async function createConn() {
         ],
         synchronize: true, // true in productuion only for testing
                            // not recommanded
-        ssl: true
+        ssl: {rejectUnauthorized: false}
         
     });
 }

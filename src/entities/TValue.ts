@@ -1,19 +1,20 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {Board} from "./Board";
 
 @Entity()
 export class TValue {
-    @PrimaryGeneratedColumn('uuid')
-    id!: string;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
     
-    @Column({nullable: false})
-    value!: number;
+  @Column({nullable: false})
+  value!: number;
 
-    @Column({nullable: false})
-    boardId!: string;
+  @CreateDateColumn()
+  created!: Date;
 
-    @CreateDateColumn()
-    created!: Date;
+  @UpdateDateColumn()
+  updated!: Date;
 
-    @UpdateDateColumn()
-    updated!: Date;
+  @ManyToOne(() => Board, board => board.values)
+  board!: Board;
 }

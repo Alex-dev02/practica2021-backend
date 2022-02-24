@@ -6,7 +6,6 @@ import logger from 'koa-logger';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 
-
 import { getRouters } from './utils/router';
 import { createConn } from './utils/database';
 
@@ -15,7 +14,7 @@ const httpServer = createServer(app.callback());
 const io = new Server(httpServer, {});
 app.use(cors({origin: '*'}));
 app.use(async (ctx: any, next: any) => {
-  ctx.state.io = io;
+  ctx.state.io =  io;
   await next();
 });
 app.use(logger());

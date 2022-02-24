@@ -1,5 +1,6 @@
 import Router from '@koa/router';
 import { DeleteResult } from 'typeorm';
+import { Board } from '../entities/Board';
 import { TValue } from '../entities/TValue';
 import { deleteTValue, getAllTValues, getLastAddedValue, getTValueById, saveTValue, updateTValue } from '../servicies/tvalue.service';
 
@@ -7,9 +8,13 @@ const router = new Router();
 router.prefix('/tvalues');
 
 router.post('/', async (ctx: any, next: any): Promise<TValue> => {
-  const tvalue: TValue =  await saveTValue(ctx.query.value, ctx.query.boardId);
+  const tvalue: TValue =  await saveTValue(ctx.query.value, ctx.query.boardId, ctx.state.io);
+  const tvalueToSend = {
+    value: tvalue.value,
+    board: tvalue.board.boardId
+  }
   const io = ctx.state.io;
-  io.emit("new-tvalue", tvalue);
+  await io.emit("new-tvalue", tvalueToSend);
   return ctx.body = tvalue;
 });
 

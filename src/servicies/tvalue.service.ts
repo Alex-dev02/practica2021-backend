@@ -1,13 +1,15 @@
+import { Socket } from "socket.io";
 import { DeleteResult, getConnection } from "typeorm";
 import { Board } from "../entities/Board";
 import { TValue } from "../entities/TValue";
 import { saveBoard } from "./board.service";
 
-export const saveTValue = async(value: number, boardId: string): Promise<TValue> => {
+export const saveTValue = async(value: number, boardId: string, io: Socket): Promise<TValue> => {
 	let board: Board|undefined = 
 		await getConnection().getRepository(Board).findOne({where:{boardId}});
 	if (!board) {
 		board = await saveBoard(boardId);
+    io.emit("new-boards-count");
 	}   
 	const tvalue = new TValue();
 	tvalue.board = board;

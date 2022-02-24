@@ -7,15 +7,13 @@ const router = new Router();
 router.prefix('/boards');
 
 router.post('/create', async(ctx: any, next: any): Promise<Board> => {
-	return ctx.body = await saveBoard(ctx.query.boardId);
-})
+  return ctx.body = await saveBoard(ctx.query.boardId);
+});
 
 router.get('/all', async(ctx: any, next: any): Promise<Board[]> => {
  return ctx.body = await getAllBoards();
 });
 
-
-// ADD SOCKET IO EVENT TO /count
 router.get('/count', async(ctx: any, next: any): Promise<number>=> {
 	return ctx.body = await getNumberOfBoards();
 });

@@ -1,6 +1,5 @@
 import Router from '@koa/router';
 import { DeleteResult } from 'typeorm';
-import { Board } from '../entities/Board';
 import { TValue } from '../entities/TValue';
 import { deleteTValue, getAllTValues, getLastAddedValue, getTValueById, saveTValue, updateTValue } from '../servicies/tvalue.service';
 

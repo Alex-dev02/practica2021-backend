@@ -3,7 +3,7 @@ import { Board } from "../entities/Board";
 import { TValue } from "../entities/TValue";
 require('dotenv').config()
 
-export async function createConn() { 
+export async function createDBConnection() { 
     return await createConnection({
         type: 'postgres',
         url: process.env.DATABASE_URL,
@@ -18,6 +18,6 @@ export async function createConn() {
         synchronize: true, // true in productuion only for testing
                            // not recommanded
         ssl: process.env.ENV === 'PROD' ? {rejectUnauthorized: false} : false
-        
+        // check recommanded params for db
     });
 }

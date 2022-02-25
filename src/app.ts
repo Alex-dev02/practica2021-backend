@@ -7,7 +7,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 
 import { getRouters } from './utils/router';
-import { createConn } from './utils/database';
+import { createDBConnection } from './utils/database';
 
 const app = new Koa();
 const httpServer = createServer(app.callback());
@@ -21,7 +21,7 @@ app.use(async (ctx: any, next: any) => {
 });
 app.use(logger());
 
-createConn();
+createDBConnection();
 
 const routers = getRouters();
 

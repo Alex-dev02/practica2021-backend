@@ -16,7 +16,7 @@ export async function createDBConnection() {
           Board
       ],
       synchronize: process.env.ENV === 'PROD' ? false : true,
-      ssl: process.env.ENV === 'PROD' ? {rejectUnauthorized: false} : false
+      ssl: process.env.ENV === 'PROD' ? {rejectUnauthorized: true} : false
       // check recommanded params for SSL
     });
 }

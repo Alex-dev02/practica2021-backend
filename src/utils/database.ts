@@ -15,9 +15,9 @@ export async function createDBConnection() {
             TValue,
             Board
         ],
-        synchronize: true, // true in productuion only for testing
+        synchronize: process.env.ENV === 'PROD' ? false : true, // true in productuion only for testing
                            // not recommanded
         ssl: process.env.ENV === 'PROD' ? {rejectUnauthorized: false} : false
         // check recommanded params for db
-    });
+      });
 }

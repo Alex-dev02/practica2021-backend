@@ -8,7 +8,9 @@
   "scripts": {
     "start-dev": "npx tsc & node dist/app.js",
     "postinstall": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "create-migration": "cd src/migration & typeorm migration:create -n",
+    "migrate": "cd src/migration & typeorm migration:run"
   },
   "engines": {
     "node": "16.13.2"

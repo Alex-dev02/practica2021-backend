@@ -15,6 +15,9 @@ const io = new Server(httpServer, {});
 app.use(cors({
   origin: process.env.ENV === 'DEV' ? '*' : process.env.ORIGIN 
 }));
+
+process.env['START_TIME'] = `${Date.now()}`;
+
 app.use(async (ctx: any, next: any) => {
   ctx.state.io =  io;
   await next();

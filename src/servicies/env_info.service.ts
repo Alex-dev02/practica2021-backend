@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import { getConnection } from "typeorm"
 
 const millisecondsToNormalTime = (milliseconds: number): string => {
@@ -36,3 +38,12 @@ export const getDatabaseSize = async (): Promise<string> => {
 export const getServerRuntime = (startTime: number): string => {
   return millisecondsToNormalTime(Date.now() - startTime);
 };
+
+export const getLogs = (): string | undefined => {
+  try {
+     return fs.readFileSync('logs.txt', 'utf8');
+  } catch (err) {
+    console.log(err);
+  }
+};
+

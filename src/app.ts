@@ -3,13 +3,13 @@ import "reflect-metadata";
 import cors from '@koa/cors'
 import logger from 'koa-logger';
 import koaBody from 'koa-body';
-import fileStream from 'fs';
 
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 
 import { getRouters } from './utils/router';
 import { createDBConnection } from './utils/database';
+import { stream } from './utils/logsfileStream';
 
 const app = new Koa();
 app.use(koaBody());
@@ -24,8 +24,8 @@ app.use(cors({
 process.env['START_TIME'] = `${Date.now()}`;
 
 app.use((ctx: any, next: any) => {
-  fileStream.appendFileSync(
-    'logs.txt', `${new Date()} ` + JSON.stringify(ctx) +
+  stream.write(
+    `${new Date()} ` + JSON.stringify(ctx) +
       '\nreq.body:' + JSON.stringify(ctx.request.body) + '\n'
     );
   next();

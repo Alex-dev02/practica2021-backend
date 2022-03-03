@@ -20,6 +20,7 @@
     "@koa/router": "^10.1.1",
     "@types/koa__router": "^8.0.11",
     "ajv": "^8.10.0",
+    "ajv-formats": "^2.1.1",
     "dotenv": "^14.3.2",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",

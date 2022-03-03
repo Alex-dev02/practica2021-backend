@@ -2,7 +2,8 @@ import Router from '@koa/router';
 import { DeleteResult } from 'typeorm';
 import { TValue } from '../entities/TValue';
 import { deleteTValue, getAllTValues, getLastAddedValue, getTValueById, saveTValue, updateTValue } from '../servicies/tvalue.service';
-import {newTValueValidator, updateTValueValidator, uuidValidator} from '../data_validators/TValueValidator';
+import {newTValueValidator, updateTValueValidator} from '../data_validators/TValueValidator';
+import { uuidValidator } from '../data_validators/SimpleTypesValidators';
 import { NewTValueSchema, UpdateTValueSchema } from '../data_validators/ValidationInterfaces';
 
 const router = new Router();

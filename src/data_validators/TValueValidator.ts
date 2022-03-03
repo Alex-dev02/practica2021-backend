@@ -39,10 +39,5 @@ const updateTValueSchema: JSONSchemaType<UpdateTValueSchema> = {
   additionalProperties: false
 };
 
-export const uuidValidator = ajv.compile<string>({
-  type: 'string',
-  format: 'uuid',
-  nullable: false
-});
 export const updateTValueValidator = ajv.compile<NewTValueSchema>(updateTValueSchema);
 export const newTValueValidator = ajv.compile<UpdateTValueSchema>(newTValueSchema);

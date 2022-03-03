@@ -21,13 +21,13 @@ app.use(cors({
   origin: process.env.ENV === 'DEV' ? '*' : process.env.ORIGIN 
 }));
 
-app.use((ctx: any, next: any) => {
+app.use(async (ctx: any, next: any) => {
   fileStream.appendFileSync(
     'logs.txt', `${new Date()} ` + JSON.stringify(ctx) +
       '\nreq.body:' + JSON.stringify(ctx.request.body) + '\n'
     );
-  next();
-})
+  await next();
+});
 
 app.use(async (ctx: any, next: any) => {
   ctx.state.io =  io;

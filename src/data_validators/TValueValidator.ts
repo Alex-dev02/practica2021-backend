@@ -13,7 +13,8 @@ const newTValueSchema: JSONSchemaType<NewTValueSchema> = {
       type: 'integer'
     },
     board: {
-      type: 'string'
+      type: 'string',
+      pattern: '^[a-zA-Z0-9_.-]*$'
     }
   },
   required: ['value', 'board'],

@@ -23,13 +23,13 @@ app.use(cors({
 
 process.env['START_TIME'] = `${Date.now()}`;
 
-app.use((ctx: any, next: any) => {
+app.use(async (ctx: any, next: any) => {
   stream.write(
     `${new Date()} ` + JSON.stringify(ctx) +
       '\nreq.body:' + JSON.stringify(ctx.request.body) + '\n'
     );
-  next();
-})
+  await next();
+});
 
 app.use(async (ctx: any, next: any) => {
   ctx.state.io =  io;

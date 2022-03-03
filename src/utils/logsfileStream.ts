@@ -1,4 +1,4 @@
-import fileStream from 'fs';
+import fs from 'fs';
 
-export let stream = fileStream.createWriteStream('logs.txt', {flags: 'a'}); 
+export let stream = fs.createWriteStream('logs.txt', {flags: 'a'}); 
 

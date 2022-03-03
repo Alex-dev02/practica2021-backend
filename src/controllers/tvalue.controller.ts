@@ -2,7 +2,7 @@ import Router from '@koa/router';
 import { DeleteResult } from 'typeorm';
 import { TValue } from '../entities/TValue';
 import { deleteTValue, getAllTValues, getLastAddedValue, getTValueById, saveTValue, updateTValue } from '../servicies/tvalue.service';
-import {newTValueValidator, updateTValueValidator} from '../data_validators/TValueValidator';
+import {newTValueValidator, updateTValueValidator, uuidValidator} from '../data_validators/TValueValidator';
 import { NewTValueSchema, UpdateTValueSchema } from '../data_validators/ValidationInterfaces';
 
 const router = new Router();
@@ -31,6 +31,8 @@ router.get('/ping', async (ctx: any, next: any): Promise<string> => {
 });
 
 router.get('/single', async (ctx: any, next:any): Promise<TValue | undefined> => {
+  if (!uuidValidator(ctx.query.id))
+    return ctx.body = uuidValidator.errors as any;
   return ctx.body = await getTValueById(ctx.query.id);
 });
 
@@ -60,6 +62,8 @@ router.put('/update', async(ctx: any, next: any): Promise<TValue> => {
 });
 
 router.delete('/', async(ctx: any, next: any): Promise<DeleteResult> => {
+  if (!uuidValidator(ctx.query.id))
+    return ctx.body = uuidValidator.errors as any;
   return ctx.body = await deleteTValue(ctx.query.id);
 });
 
